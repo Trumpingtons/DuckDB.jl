@@ -1,5 +1,7 @@
 # Official DuckDB Julia Package
 
+> **This fork, used by [Pollis](https://pollis.org), differs from [duckdb/DuckDB.jl](https://github.com/duckdb/DuckDB.jl) in one way: it has no `DuckDB_jll` dependency.** The library always comes from the `JULIA_DUCKDB_LIBRARY` environment variable, which Pollis sets to the official `libduckdb` it ships, so Julia and Pollis share one DuckDB engine. Loading the package without the variable set is an error.
+
 DuckDB is a high-performance in-process analytical database system. It is designed to be fast, reliable and easy to use. For more information on the goals of DuckDB, please refer to [the Why DuckDB page on our website](https://duckdb.org/why_duckdb).
 
 The DuckDB Julia package provides a high-performance front-end for DuckDB. Much like SQLite, DuckDB runs in-process within the Julia client, and provides a DBInterface front-end.

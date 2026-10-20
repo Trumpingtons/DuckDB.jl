@@ -42,8 +42,8 @@ from capigen.tools import build_registry, chase, resolve_enum_values, version_ke
 # DuckDB.jl policy
 # ---------------------------------------------------------------------------
 
-# The Julia package that provides libduckdb, used when the env var is unset.
-JLL_PACKAGE = "DuckDB_jll"
+# The message when the env var is unset: this fork has no DuckDB_jll, the library always comes from the env var.
+MISSING_LIBRARY = "DuckDB: set JULIA_DUCKDB_LIBRARY to the path of libduckdb before loading DuckDB"
 # Banner title of the generated files.
 TITLE = "DuckDB Julia API"
 
@@ -447,7 +447,7 @@ def _render_header(version: str, invocation: str | None, names: dict) -> list[st
         f'if "{names["env_var"]}" in keys(ENV)',
         f'    {names["lib"]} = ENV["{names["env_var"]}"]',
         "else",
-        f"    using {JLL_PACKAGE}",
+        f'    error("{MISSING_LIBRARY}")',
         "end",
         "",
         f'{names["version_const"]} = v"{version}"',

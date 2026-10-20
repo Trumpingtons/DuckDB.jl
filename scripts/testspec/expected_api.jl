@@ -15,7 +15,7 @@ using Base.Libc
 if "JULIA_DUCKDB_LIBRARY" in keys(ENV)
     libduckdb = ENV["JULIA_DUCKDB_LIBRARY"]
 else
-    using DuckDB_jll
+    error("DuckDB: set JULIA_DUCKDB_LIBRARY to the path of libduckdb before loading DuckDB")
 end
 
 DUCKDB_API_VERSION = v"1.2.0"
