@@ -38,5 +38,6 @@ include("scalar_function.jl")
 include("replacement_scan.jl")
 include("table_scan.jl")
 include("old_interface.jl")
+include("precompile.jl")
 
 end # module
